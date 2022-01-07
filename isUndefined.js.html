@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> throttle.js</title>
+  <title> isUndefined.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>throttle.js</h1>
+                    <h1>isUndefined.js</h1>
                 </header>
                 
 
@@ -86,45 +86,15 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-* 功能：节流
-* @param {Function} fn - 需要执行的函数
-* @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
-* @param {Object} opts - 需要执行的函数
-* @module throttle
-* @return {Function} 
+* 给的值是否是undefined
+* @param {any} obj
+* @return {Boolean} 
 */
-// 第四版
-function throttle(func, wait, options = {}) {
-  let previous = 0;
-  let timer = null;
-  return function () {
-    const args = arguments;
-    const context = this;
-    const now = Date.now();
-    console.log(previous, !previous);
-    if (!previous &amp;&amp; !options.leading) previous = now;
-    const remaining = wait - (now - previous);
-    if (remaining &lt;= 0) {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
-      previous = now;
-      func.apply(context, args);
-    } else if (!timer &amp;&amp; options.trailing !== false) {
-      console.log(123123);
-      timer = setTimeout(() => {
-        timer = null;
-        previous = options.leading === false ? 0 : new Date().getTime();
-        func.apply(context, args);
-      }, remaining);
-    }
-
-  }
+function isUndefined(obj) {
+  return obj === void 0;
 }
 
-export default throttle;
-</code></pre>
+export default isUndefined;</code></pre>
         </article>
     </section>
 

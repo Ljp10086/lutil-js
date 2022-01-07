@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> throttle.js</title>
+  <title> Global</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -75,58 +73,270 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>throttle.js</h1>
+                    <p>Title</p>
+                    <h1>Global</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
-* 功能：节流
-* @param {Function} fn - 需要执行的函数
-* @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
-* @param {Object} opts - 需要执行的函数
-* @module throttle
-* @return {Function} 
-*/
-// 第四版
-function throttle(func, wait, options = {}) {
-  let previous = 0;
-  let timer = null;
-  return function () {
-    const args = arguments;
-    const context = this;
-    const now = Date.now();
-    console.log(previous, !previous);
-    if (!previous &amp;&amp; !options.leading) previous = now;
-    const remaining = wait - (now - previous);
-    if (remaining &lt;= 0) {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
-      previous = now;
-      func.apply(context, args);
-    } else if (!timer &amp;&amp; options.trailing !== false) {
-      console.log(123123);
-      timer = setTimeout(() => {
-        timer = null;
-        previous = options.leading === false ? 0 : new Date().getTime();
-        func.apply(context, args);
-      }, remaining);
-    }
+        <h2></h2>
+        
+    
+</header>
 
-  }
-}
+<article>
+    <div class="container-overview">
+    
+        
 
-export default throttle;
-</code></pre>
-        </article>
-    </section>
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="isUndefined">
+        <a class="href-link" href="#isUndefined">#</a>
+        
+        <span class="code-name">
+            
+                isUndefined<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        给的值是否是undefined
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>obj</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">any</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="isUndefined.js.html" class="button">View Source</a>
+            <span>
+                <a href="isUndefined.js.html">isUndefined.js</a>, <a href="isUndefined.js.html#line6">line 6</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Boolean</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
