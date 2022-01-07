@@ -16,6 +16,7 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           config_file: ./conf.json
+          template: better-docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
