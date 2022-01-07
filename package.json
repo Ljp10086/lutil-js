@@ -6,7 +6,7 @@
   "author": "鲁举佩 <653390161@qq.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "docs": "node scripts/jsdoc-markdown.js && jsdoc -c ./conf.json"
   },
   "devDependencies": {
