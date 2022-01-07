@@ -1,5 +1,6 @@
 import isUndefined from "../src/isUndefined";
 import each from '../src/each';
+import map from "../src/map";
 
 describe('isUndefined', () => {
   test('undefined', () => {
@@ -54,6 +55,34 @@ describe('each', () => {
     each([], function (item, index, source) {
       expect(this).toEqual(obj);
       expect(this.b).toEqual(obj.b);
+    }, obj);
+  })
+})
+
+
+describe('map', () => {
+  const arr = [1, void 0, false];
+  test('loop', () => {
+    map(arr, (item, index, obj) => {
+      expect(obj).toEqual(arr);
+      expect(item).toEqual(arr[index]);
+    });
+  })
+
+  test('result', () => {
+    const arr = { a: 'a', b: 2 };
+    const result = map(arr, (item, index, obj) => {
+      return item;
+    });
+    expect(result).toEqual(Object.values(arr));
+  })
+
+  test('context', () => {
+    const obj = { a: 'a', b: 'b' };
+    map([], function (item, index, source) {
+      expect(this).toEqual(obj);
+      expect(this.b).toEqual(obj.b);
+      return item;
     }, obj);
   })
 })
