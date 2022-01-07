@@ -6,10 +6,16 @@
   "author": "鲁举佩 <653390161@qq.com>",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "docs": "node scripts/jsdoc-markdown.js && jsdoc -c ./conf.json"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^7.1.0"
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7",
+    "jsdoc-to-markdown": "^7.1.0",
+    "rollup": "^2.63.0"
   },
   "dependencies": {
     "better-docs": "^2.3.2"

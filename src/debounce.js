@@ -39,3 +39,5 @@ function debounce(fn, delay = 500, immediate = false) {
 
   return debounced;
 }
+
+export default debounce;
