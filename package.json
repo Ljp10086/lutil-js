@@ -5,6 +5,9 @@
   "repository": "https://github.com/Ljp10086/lutil-js.git",
   "author": "鲁举佩 <653390161@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "docs": "node scripts/jsdoc-markdown.js && jsdoc -c ./conf.json"
+  },
   "devDependencies": {
     "jsdoc-to-markdown": "^7.1.0"
   },

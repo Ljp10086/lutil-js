@@ -7,6 +7,7 @@
     "includePattern": ".+\\.js$"
   },
   "opts": {
+    "destination": "./docs/",
     "encoding": "utf8",
     "template": "node_modules/better-docs"
   },
