@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> debounce.js</title>
+  <title> throttle.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>debounce.js</h1>
+                    <h1>throttle.js</h1>
                 </header>
                 
 
@@ -86,47 +86,22 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-* 功能：防抖
+* 功能：节流
 * @param {Function} fn - 需要执行的函数
 * @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
-* @param {boolean} [immediate] - 是否立即执行函数，可选，默认false
-* @module debounce
+* @module throttle
 * @return {Function} 
 */
-function debounce(fn, delay = 500, immediate = false) {
-  let timer;
+function throttle(fun, delay = 500) {
+  let previous = 0;
 
-  const debounced = function (...args) {
-    let result;
-    if (timer) {
-      clearTimeout(timer);
-    }
-
-    if (immediate) {
-       // 如果已经执行过，不再执行
-       const callNow = !timer;
-       timer = setTimeout(() => {
-        timer = null;
-       }, delay)
-       if (callNow) result = fn.apply(this, args)
-    }else {
-      timer = setTimeout(() => {
-        fn.apply(this, args);
-        timer = null;
-      }, delay);
-    }
-
-    return result;
+  return (...args) => {
+    const now = Date.now();
+    if (now - previous > delay) {
+      fun.apply(this, args);
+    }    
   }
-
-  debounced.cancel = () => {
-    clearTimeout(timer);
-    timer = null;
-  }
-
-  return debounced;
-}
-</code></pre>
+}</code></pre>
         </article>
     </section>
 
