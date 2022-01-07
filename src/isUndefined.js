@@ -1,5 +1,6 @@
 /**
 * 给的值是否是undefined
+* @module isUndefined
 * @param {any} obj
 * @return {Boolean} 
 */

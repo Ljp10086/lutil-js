@@ -1,3 +1,11 @@
+/**
+* 给的值是否是undefined
+* @module isUndefined
+* @param {any} obj - 遍历的元素
+* @param {Function} iteratee - 回调的函数
+* @param {any} [context] - iteratee的this指向
+* @return {void} 
+*/
 export default function each(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);

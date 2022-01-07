@@ -50,9 +50,9 @@ describe('each', () => {
   })
 
   test('context', () => {
-    const obj = { a: 1, b: 2 };
-    each([], (item, index, obj) => {
-      expect(this.a).toEqual(obj.a);
+    const obj = { a: 'a', b: 'b' };
+    each([], function (item, index, source) {
+      expect(this).toEqual(obj);
       expect(this.b).toEqual(obj.b);
     }, obj);
   })
