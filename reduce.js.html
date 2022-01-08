@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> throttle.js</title>
+  <title> reduce.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>throttle.js</h1>
+                    <h1>reduce.js</h1>
                 </header>
                 
 
@@ -85,46 +85,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
-* 功能：节流
-* @param {Function} fn - 需要执行的函数
-* @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
-* @param {Object} opts - 需要执行的函数
-* @module throttle
-* @return {Function} 
-*/
-// 第四版
-function throttle(func, wait, options = {}) {
-  let previous = 0;
-  let timer = null;
-  return function () {
-    const args = arguments;
-    const context = this;
-    const now = Date.now();
-    console.log(previous, !previous);
-    if (!previous &amp;&amp; !options.leading) previous = now;
-    const remaining = wait - (now - previous);
-    if (remaining &lt;= 0) {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-      }
-      previous = now;
-      func.apply(context, args);
-    } else if (!timer &amp;&amp; options.trailing !== false) {
-      console.log(123123);
-      timer = setTimeout(() => {
-        timer = null;
-        previous = options.leading === false ? 0 : new Date().getTime();
-        func.apply(context, args);
-      }, remaining);
-    }
+            <pre class="prettyprint source linenums"><code>import isArrayLike from "./_isArrayLike";
 
+/**
+* 功能：归并
+* @param {any} obj - 遍历的元素
+* @param {Function} iteratee - 回调的函数
+* @param {any} memo - reduce函数的初始值
+* @param {any} [context] - iteratee的this指向
+* @return {any} 
+*/
+function reduce(obj, iteratee, memo, context) {
+  if (context) iteratee = iteratee.bind(context);
+  let keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj);
+  let index = 0;
+  let length = (keys || obj).length;
+
+  if (!memo) {
+    memo = obj[keys ? keys[index] : index];
+    index++;
   }
+
+  for (; index &lt; length; index++) {
+    const currentKey = keys ? keys[index] : index;
+    memo = iteratee(memo, obj[currentKey]);
+  }
+
+  return memo;
 }
 
-export default throttle;
-</code></pre>
+export default reduce;</code></pre>
         </article>
     </section>
 
