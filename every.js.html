@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> max.js</title>
+  <title> every.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>max.js</h1>
+                    <h1>every.js</h1>
                 </header>
                 
 
@@ -86,36 +86,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import isArrayLike from "./_isArrayLike";
-
 /**
-* 获取元素给定返回值最大的哪一个
-* @module isUndefined
+* 遍历list数组如果predicate返回值有一个为false则返回false，否则返回true。
 * @param {any} obj - 遍历的元素
-* @param {Function} iteratee - 回调的函数
+* @param {Function} predicate - 回调的函数
 * @param {any} [context] - iteratee的this指向
-* @return {any} 
+* @return {boolean} 
 */
-export default function max(obj, iteratee, context) {
+export default function every(obj, predicate, context) {
   if (context) {
-    iteratee = iteratee.bind(context);
+    predicate = predicate.bind(context);
   }
 
-  let keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj),
-      len = (keys || obj).length,
-      computed, 
-      result = -Infinity,
-      lastComputed = -Infinity;
-
-  for (let i = 0; i &lt; len; i++) {
+  let keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj), 
+      length = (keys || obj).length;
+  for (let i = 0; i &lt; length; i++) {
     const currentKey = keys ? keys[i] : i;
-    computed = iteratee(obj[currentKey], i, obj);
-    if (computed > lastComputed) {
-      lastComputed = computed;
-      result = obj[currentKey];
-    }
+    if (!predicate(obj[currentKey], i, obj)) {
+      return false;
+    }    
   }
-
-  return result;
+  return true;
 }</code></pre>
         </article>
     </section>
