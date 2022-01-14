@@ -1,8 +1,10 @@
-var array1 = [1, 2, '1', 2, 1];
-var array2 = [1, 1, '1', 2, 2];
-
-// 第一版
-function unique(array, isSorted) {
+/**
+* 返回array的去重版本
+* @param {Array} array - 需要去重的数组
+* @param {boolean} [isSorted] - 数组是否已经排序过
+* @return {Array} 
+*/
+export default function unique(array, isSorted) {
     var res = [];
     var seen = [];
 
@@ -20,6 +22,3 @@ function unique(array, isSorted) {
     }
     return res;
 }
-
-console.log(unique(array1)); // [1, 2, "1"]
-console.log(unique(array2, true)); // [1, "1", 2]

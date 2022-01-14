@@ -5,6 +5,8 @@ import reduce from "../src/reduce";
 import { find } from "../src";
 import filter from "../src/filter";
 import every from "../src/every";
+import max from "../src/max";
+import groupBy from "../src/groupBy";
 
 describe('isUndefined', () => {
   test('undefined', () => {
@@ -201,6 +203,41 @@ describe('filter', () => {
       expect(this.d).toEqual(obj.d);
       return num % 2 === 0;
     }, obj);
+  })
+})
+
+
+describe('max', () => {
+  const arr = [1,2,3,4,5,6,7,8];
+
+  test('arr result', () => {
+    const result = max(arr, function (num) {
+      return num;
+    });
+
+    expect(result).toEqual(8);
+  })
+
+  test('obj result', () => {
+    const obj = [{ age: 24, name: 'ljp'}, { age: 23, name: 'lmf' }, {age: 100, name: 'tianshanlaiyao'}];
+
+    const result = max(obj, function (item) {
+      return item.age;
+    });
+    expect(result).toEqual(obj[2]);
+  })
+})
+
+
+describe('groupBy', () => {
+  const arr = [1.2, 1.1, 2.3, 2.5];
+
+  test('arr result', () => {
+    const result = groupBy(arr, function (num) {
+      return Math.floor(num);
+    });
+
+    expect(result).toEqual({1: [1.2, 1.1], 2: [2.3, 2.5]});
   })
 })
 

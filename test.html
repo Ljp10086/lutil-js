@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="text">
+  <script>
+    function throttle(func, wait) {
+    let timer;
+
+    function throttled(...args) {
+      if (!timer) {
+        func.apply(this, args);
+        timer = setTimeout(() => {
+          timer = null;
+        }, wait);
+      }
+    }
+
+    return throttled;
+  }
+
+  function debounce(func, wait) {
+    let timer;
+    function debounced(...args) {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;        
+      }
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(this, args);
+      }, wait);
+    }
+
+    return debounced;
+  }
+
+  const text = document.querySelector('#text');
+  text.addEventListener('input', debounce(({ target }) => {
+    console.log(target.value);
+  }, 500))
+  </script>
+</body>
+</html>

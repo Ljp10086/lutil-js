@@ -1,6 +1,5 @@
 /**
-* 给的值是否是undefined
-* @module isUndefined
+* 遍历传入的元素
 * @param {any} obj - 遍历的元素
 * @param {Function} iteratee - 回调的函数
 * @param {any} [context] - iteratee的this指向

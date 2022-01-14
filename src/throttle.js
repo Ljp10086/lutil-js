@@ -6,7 +6,6 @@
 * @module throttle
 * @return {Function} 
 */
-// 第四版
 function throttle(func, wait, options = {}) {
   let previous = 0;
   let timer = null;
