@@ -8,7 +8,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - predicate的this指向
 * @return {boolean} 
 */
-export default function some(obj, predicate, context) {
+function some(obj, predicate, context) {
   if (context) {
     predicate = predicate.bind(context);
   }
@@ -25,3 +25,5 @@ export default function some(obj, predicate, context) {
 
   return false;
 }
+
+export default some;

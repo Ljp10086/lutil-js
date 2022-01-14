@@ -7,7 +7,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - iteratee的this指向
 * @return {Array} 
 */
-export default function filter(obj, predicate, context) {
+function filter(obj, predicate, context) {
   let result = [],
       keys = !isArrayLike(obj) && Object.keys(obj),
       len = (keys || obj).length;
@@ -23,3 +23,5 @@ export default function filter(obj, predicate, context) {
 
   return result;
 }
+
+export default filter;

@@ -7,7 +7,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - iteratee的this指向
 * @return {any} 
 */
-export default function max(obj, iteratee, context) {
+function max(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);
   }
@@ -29,3 +29,5 @@ export default function max(obj, iteratee, context) {
 
   return result;
 }
+
+export default max;

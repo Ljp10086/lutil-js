@@ -4,7 +4,7 @@
 * @param {any} [context] - 绑定的上下文
 * @return {Function}
 */
-export default function bind(func, context, ...args) {
+function bind(func, context, ...args) {
   var fNOP = function () {};
 
   const fBound = function (...innerArgs) {
@@ -18,3 +18,5 @@ export default function bind(func, context, ...args) {
   console.log('bind');
   return fBound;
 }
+
+export default bind;

@@ -5,7 +5,7 @@
 * @param {any} [context] - iteratee的this指向
 * @return {void} 
 */
-export default function each(obj, iteratee, context) {
+function each(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);
   }
@@ -21,3 +21,5 @@ export default function each(obj, iteratee, context) {
     }
   }
 }
+
+export default each;

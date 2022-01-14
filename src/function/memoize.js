@@ -3,7 +3,7 @@
 * @param {Function} func - 需要执行的函数
 * @return {Function} 
 */
-export default function memoize(func) {
+function memoize(func) {
   const memoize = function(key) {
     const cache = memoize.cache;
     const address = key;
@@ -15,3 +15,5 @@ export default function memoize(func) {
   memoize.cache = {};
   return memoize;
 }
+
+export default memoize;

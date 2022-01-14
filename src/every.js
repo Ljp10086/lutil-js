@@ -6,7 +6,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - iteratee的this指向
 * @return {boolean} 
 */
-export default function every(obj, predicate, context) {
+function every(obj, predicate, context) {
   if (context) {
     predicate = predicate.bind(context);
   }
@@ -21,3 +21,5 @@ export default function every(obj, predicate, context) {
   }
   return true;
 }
+
+export default every;

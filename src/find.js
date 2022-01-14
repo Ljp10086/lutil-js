@@ -1,5 +1,5 @@
 import isArrayLike from "./_isArrayLike";
-import findIndex from "../_findIndex";
+import findIndex from "./_findIndex";
 import findKey from "./_findKey";
 
 /**

@@ -1,4 +1,4 @@
-export default function flatten(array, depth = Infinity, output = []) {
+function flatten(array, depth = Infinity, output = []) {
   for (let i = 0; i < array.length; i++) {
     const value = array[i];
     if (Array.isArray(value)) {
@@ -9,3 +9,5 @@ export default function flatten(array, depth = Infinity, output = []) {
   }
   return output;
 }
+
+export default flatten;

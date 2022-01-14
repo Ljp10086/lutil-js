@@ -7,7 +7,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - iteratee的this指向
 * @return {Array} 
 */
-export default function groupBy(obj, iteratee, context) {
+function groupBy(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);
   }
@@ -28,3 +28,5 @@ export default function groupBy(obj, iteratee, context) {
 
   return result;
 }
+
+export default groupBy;

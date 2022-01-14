@@ -8,7 +8,7 @@ import isArrayLike from "./_isArrayLike";
 * @param {any} [context] - iteratee的this指向
 * @return {Array} 
 */
-export default function map(obj, iteratee, context) {
+function map(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);
   }
@@ -24,3 +24,5 @@ export default function map(obj, iteratee, context) {
 
   return results;
 }
+
+export default map;

@@ -7,7 +7,9 @@ import isArrayLike from "./_isArrayLike";
 * @param {number} [fromIndex] - iteratee的this指向
 * @return {boolean} 
 */
-export default function contains(obj, value, fromIndex) {
+function contains(obj, value, fromIndex) {
   if (!isArrayLike(obj)) obj = Object.values(obj); 
   return [...obj].indexOf(value) > -1;
 }
+
+export default contains;

@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-throttle.html">throttle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#reduce">reduce</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#contains">contains</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#every">every</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#some">some</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#unique">unique</a></li></ul></div>
                 
             </nav>
         </div>
@@ -96,11 +96,13 @@ import findKey from "./_findKey";
 * @param {any} [context] - iteratee的this指向
 * @return {any} 
 */
-export default function find(obj, predicate, context) {
+function find(obj, predicate, context) {
   const keyFinder = isArrayLike(obj) ? findIndex : findKey;
   const key = keyFinder(obj, predicate, context);
   if (key !== void 0 &amp;&amp; key !== -1) return obj[key];
 }
+
+export default find;
 </code></pre>
         </article>
     </section>

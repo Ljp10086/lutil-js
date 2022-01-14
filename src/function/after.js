@@ -4,10 +4,12 @@
 * @param {any} func - 需要执行的函数
 * @return {Function}
 */
-export default function after(count, func) {
+function after(count, func) {
   return function () {
     if (--count < 1) {
       return func.apply(this, arguments);
     }
   }
 }
+
+export default after;

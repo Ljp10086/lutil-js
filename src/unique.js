@@ -4,7 +4,7 @@
 * @param {boolean} [isSorted] - 数组是否已经排序过
 * @return {Array} 
 */
-export default function unique(array, isSorted) {
+function unique(array, isSorted) {
     var res = [];
     var seen = [];
 
@@ -22,3 +22,5 @@ export default function unique(array, isSorted) {
     }
     return res;
 }
+
+export default unique;
