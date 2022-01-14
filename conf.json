@@ -2,7 +2,7 @@
   "plugins": [],
   "recurseDepth": 10,
   "source": {
-    "include": ["./src"],
+    "include": ["./src", "./src/array", "./src/function"],
     "exclude": ["./node_modules"],
     "includePattern": ".+\\.js$"
   },
