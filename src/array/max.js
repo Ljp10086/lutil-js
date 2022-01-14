@@ -2,7 +2,6 @@ import isArrayLike from "./_isArrayLike";
 
 /**
 * 获取元素给定返回值最大的哪一个
-* @module isUndefined
 * @param {any} obj - 遍历的元素
 * @param {Function} iteratee - 回调的函数
 * @param {any} [context] - iteratee的this指向

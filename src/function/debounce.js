@@ -3,7 +3,6 @@
 * @param {Function} fn - 需要执行的函数
 * @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
 * @param {boolean} [immediate] - 是否立即执行函数，可选，默认false
-* @module debounce
 * @return {Function} 
 */
 function debounce(fn, delay = 500, immediate = false) {

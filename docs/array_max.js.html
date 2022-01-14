@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> filter.js</title>
+  <title> array/max.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-throttle.html">throttle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#reduce">reduce</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#throttle">throttle</a></li></ul></div>
                 
             </nav>
         </div>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>filter.js</h1>
+                    <h1>array/max.js</h1>
                 </header>
                 
 
@@ -88,29 +88,34 @@
             <pre class="prettyprint source linenums"><code>import isArrayLike from "./_isArrayLike";
 
 /**
-* 过滤数组
+* 获取元素给定返回值最大的哪一个
 * @param {any} obj - 遍历的元素
-* @param {Function} predicate - 回调的函数
+* @param {Function} iteratee - 回调的函数
 * @param {any} [context] - iteratee的this指向
-* @return {Array} 
+* @return {any} 
 */
-export default function filter(obj, predicate, context) {
-  let result = [],
-      keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj),
-      len = (keys || obj).length;
-
+export default function max(obj, iteratee, context) {
   if (context) {
-    predicate = predicate.bind(context);
+    iteratee = iteratee.bind(context);
   }
+
+  let keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj),
+      len = (keys || obj).length,
+      computed, 
+      result = -Infinity,
+      lastComputed = -Infinity;
 
   for (let i = 0; i &lt; len; i++) {
     const currentKey = keys ? keys[i] : i;
-    if (predicate(obj[currentKey], i, obj)) result.push(obj[currentKey]);
+    computed = iteratee(obj[currentKey], i, obj);
+    if (computed > lastComputed) {
+      lastComputed = computed;
+      result = obj[currentKey];
+    }
   }
 
   return result;
-}
-</code></pre>
+}</code></pre>
         </article>
     </section>
 

@@ -3,7 +3,6 @@ import isArrayLike from "./_isArrayLike";
 
 /**
 * 遍历数组并组装iteratee函数的返回值并返回数组
-* @module isUndefined
 * @param {Array} obj - 遍历的元素
 * @param {Function} iteratee - 回调的函数
 * @param {any} [context] - iteratee的this指向

@@ -3,7 +3,6 @@
 * @param {Function} fn - 需要执行的函数
 * @param {number} [delay] - 延迟执行时间，可选，默认500毫秒
 * @param {Object} opts - 需要执行的函数
-* @module throttle
 * @return {Function} 
 */
 function throttle(func, wait, options = {}) {

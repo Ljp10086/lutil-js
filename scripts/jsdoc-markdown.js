@@ -4,7 +4,7 @@ const fs = require('fs');
 
 (function () {
   const getRenderTemplateFromJSFile = async () => {
-    const jsMdData = await jsdoc2md.render({ files: 'src/*.js' })
+    const jsMdData = await jsdoc2md.render({ files: 'src/**/*.js' })
     return jsMdData;
   }
 
