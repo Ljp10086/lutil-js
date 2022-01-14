@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-debounce.html">debounce</a></li><li><a href="module-isUndefined.html">isUndefined</a></li><li><a href="module-throttle.html">throttle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#reduce">reduce</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#contains">contains</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#every">every</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#some">some</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#unique">unique</a></li></ul></div>
                 
             </nav>
         </div>
@@ -90,13 +90,12 @@ import isArrayLike from "./_isArrayLike";
 
 /**
 * 遍历数组并组装iteratee函数的返回值并返回数组
-* @module isUndefined
 * @param {Array} obj - 遍历的元素
 * @param {Function} iteratee - 回调的函数
 * @param {any} [context] - iteratee的this指向
 * @return {Array} 
 */
-export default function map(obj, iteratee, context) {
+function map(obj, iteratee, context) {
   if (context) {
     iteratee = iteratee.bind(context);
   }
@@ -111,7 +110,10 @@ export default function map(obj, iteratee, context) {
   }
 
   return results;
-}</code></pre>
+}
+
+export default map;
+</code></pre>
         </article>
     </section>
 

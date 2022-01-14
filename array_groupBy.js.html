@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> isUndefined.js</title>
+  <title> array/groupBy.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#contains">contains</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#every">every</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#some">some</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#unique">unique</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#throttle">throttle</a></li></ul></div>
                 
             </nav>
         </div>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>isUndefined.js</h1>
+                    <h1>array/groupBy.js</h1>
                 </header>
                 
 
@@ -85,16 +85,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
-* 给的值是否是undefined
-* @param {any} obj
-* @return {Boolean} 
-*/
-function isUndefined(obj) {
-  return obj === void 0;
-}
+            <pre class="prettyprint source linenums"><code>import isArrayLike from "./_isArrayLike";
 
-export default isUndefined;</code></pre>
+/**
+* 分组
+* @param {any} obj - 遍历的元素
+* @param {Function} iteratee - 回调的函数
+* @param {any} [context] - iteratee的this指向
+* @return {Array} 
+*/
+export default function groupBy(obj, iteratee, context) {
+  if (context) {
+    iteratee = iteratee.bind(context);
+  }
+
+  let keys = !isArrayLike(obj) &amp;&amp; Object.keys(obj),
+      len = (keys || obj).length, 
+      result = {};
+  
+  for (let i = 0; i &lt; len; i++) {
+    const currentKey = keys ? keys[i] : i;
+    const key = iteratee(obj[currentKey], i, obj);
+    if (result[key]) {
+      result[key].push(obj[currentKey]);
+    } else {
+      result[key] = [obj[currentKey]];
+    }
+  }
+
+  return result;
+}</code></pre>
         </article>
     </section>
 

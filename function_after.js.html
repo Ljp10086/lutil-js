@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> isUndefined.js</title>
+  <title> function/after.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#contains">contains</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#every">every</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#some">some</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#unique">unique</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#throttle">throttle</a></li></ul></div>
                 
             </nav>
         </div>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>isUndefined.js</h1>
+                    <h1>function/after.js</h1>
                 </header>
                 
 
@@ -86,15 +86,18 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-* 给的值是否是undefined
-* @param {any} obj
-* @return {Boolean} 
+* 创建一个函数, 只有在运行了 count 次之后才有效果. 在处理同组异步请求返回结果时, 如果你要确保同组里所有异步请求完成之后才 执行这个函数, 这将非常有用。
+* @param {number} count - 执行次数
+* @param {any} func - 需要执行的函数
+* @return {Function}
 */
-function isUndefined(obj) {
-  return obj === void 0;
-}
-
-export default isUndefined;</code></pre>
+export default function after(count, func) {
+  return function () {
+    if (--count &lt; 1) {
+      return func.apply(this, arguments);
+    }
+  }
+}</code></pre>
         </article>
     </section>
 
