@@ -5,6 +5,7 @@
   "repository": "https://github.com/Ljp10086/lutil-js.git",
   "author": "鲁举佩 <653390161@qq.com>",
   "license": "MIT",
+  "homepage": "https://ljp10086.github.io/lutil-js/",
   "scripts": {
     "test": "jest --coverage",
     "docs": "node scripts/jsdoc-markdown.js && jsdoc -c ./conf.json"
